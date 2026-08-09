@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
-import { NavBar } from '@/components/layout/NavBar';
+import { LayoutShell } from '@/components/providers/LayoutShell';
 
 async function getUser() {
   try {
@@ -27,11 +27,8 @@ export default async function ProtectedLayout({ children }: { children: React.Re
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <NavBar userName={user.name} />
-      <main className="flex-1 max-w-screen-xl mx-auto w-full px-6 py-8">
-        {children}
-      </main>
-    </div>
+    <LayoutShell userName={user.name}>
+      {children}
+    </LayoutShell>
   );
 }
