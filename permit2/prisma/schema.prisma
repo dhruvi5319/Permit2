@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum PermitStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  REVOKED
+}
+
+enum PermitType {
+  WORK
+  ACCESS
+  ACTIVITY
+  SAFETY
+  OTHER
+}
+
+model User {
+  id            String                @id @default(uuid())
+  email         String                @unique
+  passwordHash  String                @map("password_hash")
+  name          String
+  createdAt     DateTime              @default(now()) @map("created_at")
+  permits       Permit[]              @relation("CreatedBy")
+  historyEvents PermitStatusHistory[]
+
+  @@map("users")
+}
+
+model Permit {
+  id                String                @id @default(uuid())
+  title             String                @db.VarChar(255)
+  type              PermitType
+  applicantName     String                @map("applicant_name") @db.VarChar(255)
+  description       String                @db.Text
+  notes             String?               @db.Text
+  status            PermitStatus          @default(PENDING)
+  startDate         DateTime              @map("start_date") @db.Date
+  endDate           DateTime              @map("end_date")   @db.Date
+  rejectionReason   String?               @map("rejection_reason")  @db.Text
+  revocationReason  String?               @map("revocation_reason") @db.Text
+  createdBy         String                @map("created_by")
+  creator           User                  @relation("CreatedBy", fields: [createdBy], references: [id])
+  createdAt         DateTime              @default(now())   @map("created_at")
+  updatedAt         DateTime              @updatedAt        @map("updated_at")
+  statusHistory     PermitStatusHistory[]
+
+  @@index([status])
+  @@index([type])
+  @@index([createdAt])
+  @@index([updatedAt])
+  @@index([startDate])
+  @@index([createdBy])
+  @@index([status, type])
+  @@map("permits")
+}
+
+model PermitStatusHistory {
+  id        String       @id @default(uuid())
+  permitId  String       @map("permit_id")
+  permit    Permit       @relation(fields: [permitId], references: [id], onDelete: Cascade)
+  status    PermitStatus
+  event     String       @db.VarChar(50)
+  actorId   String       @map("actor_id")
+  actor     User         @relation(fields: [actorId], references: [id])
+  actorName String       @map("actor_name") @db.VarChar(255)
+  notes     String?      @db.Text
+  createdAt DateTime     @default(now()) @map("created_at")
+
+  @@index([permitId])
+  @@index([createdAt])
+  @@map("permit_status_history")
+}
