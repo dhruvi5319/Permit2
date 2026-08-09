@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -14,7 +14,7 @@ const loginSchema = z.object({
 
 type LoginFormData = z.infer<typeof loginSchema>;
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [authError, setAuthError] = useState<string | null>(null);
@@ -161,5 +161,26 @@ export default function LoginPage() {
       {/* Caption */}
       <p className="text-center text-xs text-gray-400 mt-4">Permit2 POC — Restricted Access</p>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="w-full max-w-md">
+          <div className="bg-white rounded-xl shadow-md p-10 animate-pulse">
+            <div className="h-6 bg-gray-200 rounded w-32 mb-8" />
+            <div className="h-8 bg-gray-200 rounded w-48 mb-2" />
+            <div className="h-4 bg-gray-200 rounded w-56 mb-8" />
+            <div className="h-10 bg-gray-200 rounded mb-5" />
+            <div className="h-10 bg-gray-200 rounded mb-6" />
+            <div className="h-10 bg-gray-200 rounded" />
+          </div>
+        </div>
+      }
+    >
+      <LoginForm />
+    </Suspense>
   );
 }
