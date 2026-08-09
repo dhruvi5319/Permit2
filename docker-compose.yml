@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: permit2
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d permit2"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  app:
+    build:
+      context: ./permit2
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@db:5432/permit2"
+      NODE_ENV: production
+      JWT_SECRET: "change-me-in-production-must-be-at-least-32-chars"
+      JWT_EXPIRES_IN: "1h"
+      BCRYPT_COST_FACTOR: "10"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
