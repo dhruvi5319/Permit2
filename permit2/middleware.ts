@@ -1,5 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyToken } from './lib/auth';
+import { jwtVerify } from 'jose';
+
+// Edge-runtime-compatible JWT verification using jose (Web Crypto API)
+// lib/auth.ts still uses jsonwebtoken for API routes (Node.js runtime only)
+const JWT_SECRET = new TextEncoder().encode(
+  process.env.JWT_SECRET ?? 'change-me-in-production-must-be-at-least-32-chars'
+);
+
+async function verifyTokenEdge(token: string): Promise<boolean> {
+  try {
+    await jwtVerify(token, JWT_SECRET, { algorithms: ['HS256'] });
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 // Routes that do NOT require authentication
 const PUBLIC_PATHS = new Set(['/login', '/api/auth/login']);
@@ -14,7 +29,7 @@ function isPublic(pathname: string): boolean {
   );
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Always allow public paths
@@ -22,13 +37,8 @@ export function middleware(request: NextRequest) {
     // If already authenticated and visiting /login → redirect to /dashboard
     if (pathname === '/login') {
       const cookieToken = request.cookies.get('token')?.value;
-      if (cookieToken) {
-        try {
-          verifyToken(cookieToken);
-          return NextResponse.redirect(new URL('/dashboard', request.url));
-        } catch {
-          // Token invalid — let login page render
-        }
+      if (cookieToken && (await verifyTokenEdge(cookieToken))) {
+        return NextResponse.redirect(new URL('/dashboard', request.url));
       }
     }
     return NextResponse.next();
@@ -54,16 +64,13 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  try {
-    verifyToken(token);
-    return NextResponse.next();
-  } catch (err: unknown) {
-    const appErr = err as { code?: string; message?: string };
+  const valid = await verifyTokenEdge(token);
+  if (!valid) {
     if (pathname.startsWith('/api/')) {
       return NextResponse.json(
         {
           data: null,
-          error: { code: appErr.code ?? 'AUTH_UNAUTHORIZED', message: appErr.message ?? 'Authentication required.' },
+          error: { code: 'AUTH_UNAUTHORIZED', message: 'Authentication required.' },
           meta: {},
         },
         { status: 401 }
@@ -73,6 +80,8 @@ export function middleware(request: NextRequest) {
     loginUrl.searchParams.set('redirect', pathname + request.nextUrl.search);
     return NextResponse.redirect(loginUrl);
   }
+
+  return NextResponse.next();
 }
 
 export const config = {
