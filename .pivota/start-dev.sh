@@ -8,7 +8,7 @@
 #
 # Why these choices (decision-trace; do not delete):
 #   - `set -euo pipefail` not just `-e` — RESEARCH.md Pitfall 4 (silent pipe failures).
-#   - `sha256sum` for lockfile hashing — RESEARCH.md "Don't hand-roll" (universal
+#   - sha256sum for lockfile hashing — RESEARCH.md "Don't hand-roll" (universal
 #     coreutils, no extra dep vs blake3 / git hash-object / md5sum).
 #   - Backoff 1s / 2s / 4s — Claude's Discretion per CONTEXT.md (small base, predictable).
 #   - Log destination `/tmp/pivota-dev.log` — Open Question #4 resolved (always
@@ -25,18 +25,12 @@
 set -euo pipefail
 
 # === Bash version guard (RESEARCH.md Pitfall 8) ===
-# `wait -n` (used by the multi-process variant) requires bash >= 4.3.
-# Fail fast with a clear message; do not silently degrade.
 if (( BASH_VERSINFO[0] < 4 )) || { (( BASH_VERSINFO[0] == 4 )) && (( BASH_VERSINFO[1] < 3 )); }; then
   echo "[pivota] bash 4.3+ required for 'wait -n'; found ${BASH_VERSION}" >&2
   exit 127
 fi
 
 # === Single-instance guard ===
-# Multiple platform paths can invoke the wrapper concurrently (sandbox setup,
-# preview open, verify pre-flight) — observed as two `docker compose up --build`
-# trees racing in one sandbox. Second invocation exits 0 quietly: the first
-# boot is authoritative and callers poll the port, not this process.
 exec 200>/tmp/pivota-dev.lock
 if ! flock -n 200; then
   echo "[pivota] start-dev.sh already running (lock held) — exiting; poll the ready port instead" >&2
@@ -44,39 +38,32 @@ if ! flock -n 200; then
 fi
 
 # === D-11.4: tee stdout/stderr to /tmp/pivota-dev.log AND pass through ===
-# Researcher resolved log destination: /tmp/pivota-dev.log (always writable,
-# matches existing convention). SSE chat panel sees output live AND a file
-# exists for scrollback / replay.
 mkdir -p /tmp
 exec > >(tee -a /tmp/pivota-dev.log) 2>&1
 echo "[pivota] $(date -Iseconds) start-dev.sh begin (catalog: compose)"
 
 # === D-11.1 + D-11.2: per-stack env preamble ===
-# Compose: intentionally empty — compose services control their own bind
-# addresses via the `ports:` block in docker-compose.yml.
-# See catalog/compose.md § Env preamble for rationale.
+# compose — env preamble is intentionally EMPTY for this entry.
+# Compose services control their own bind addresses via the `ports:` block in
+# the compose file — there is no env-var lever the wrapper can pull to force
+# 0.0.0.0 binding for child containers.
 
 # === D-11.3: .env.example -> .env seed (platform-injection-safe) ===
-# Seed .env from .env.example for first boot, but NEVER let an .env.example
-# placeholder shadow a variable the platform already injected into the sandbox
-# environment.
 if [[ ! -f .env && -f .env.example ]]; then
   echo "[pivota] seeding .env from .env.example (preserving platform-injected vars)"
   while IFS= read -r line || [[ -n "$line" ]]; do
-    trimmed="${line#"${line%%[![:space:]]*}"}"   # left-trim for the test only
+    trimmed="${line#"${line%%[![:space:]]*}"}"
     if [[ "$trimmed" == \#* || -z "$trimmed" || "$trimmed" != *"="* ]]; then
-      printf '%s\n' "$line"; continue            # keep comments / blanks / non-assignments
+      printf '%s\n' "$line"; continue
     fi
     key="${trimmed#export }"; key="${key%%=*}"; key="${key//[[:space:]]/}"
     if [[ -n "${!key+x}" ]]; then
       printf '# [pivota] %s omitted — provided by platform environment\n' "$key"
       continue
     fi
-    # D-11.5: sanitize the copied assignment.
     if [[ "$line" != *\"* && "$line" != *\'* ]]; then
       line="$(printf '%s' "$line" | sed -E 's/[[:space:]]+#.*$//')"
     fi
-    # Replace CHANGE_ME placeholder secrets with generated values.
     value="${line#*=}"
     value_lc="$(printf '%s' "$value" | tr '[:upper:]' '[:lower:]')"
     if [[ "$value_lc" == change_me* || "$value_lc" == changeme* ]]; then
@@ -89,22 +76,9 @@ if [[ ! -f .env && -f .env.example ]]; then
   done < .env.example > .env
 fi
 
-# === Optional pre-exec snippet ===
-# Compose catalog: no pre-exec snippet needed.
-
-# === D-12: idempotent install ===
-# Compose catalog: no lockfile / install step — docker compose up --build
-# handles all image pulls and builds internally.
-SENTINEL="/tmp/pivota-setup-sentinel"
-LOCK_FILE_PATH=""
-INSTALL_PRESENCE_CHECK=""
-INSTALL_CMD=''
-
-# No install step for compose — skip sentinel logic entirely.
+# === No install step for compose (docker compose up --build handles it) ===
 
 # === D-14: retry loop (3 attempts, exponential backoff 1s / 2s / 4s) ===
-# For docker compose, EXEC_CMD is `docker compose up --build` (foreground).
-# --build is load-bearing: ensures source changes between boots are picked up.
 EXEC_CMD='docker compose up --build'
 ATTEMPT=1
 DELAY=1
@@ -125,8 +99,5 @@ while (( ATTEMPT <= 3 )); do
   ATTEMPT=$(( ATTEMPT + 1 ))
 done
 
-# Unreachable, but keep for analyzer happiness
 exit 1
 # === END PIVOTA PREAMBLE ===
-# Below this marker, projects may add custom shutdown / setup logic.
-# This region is PRESERVED across regenerations.

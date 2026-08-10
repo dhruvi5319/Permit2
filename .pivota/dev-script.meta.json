@@ -1,8 +1,8 @@
 {
   "generator_version": "init-dev-server@1",
   "catalog_entry": "compose",
-  "generated_at": "2026-08-10T00:00:00Z",
-  "inspection_inputs_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "generated_at": "2026-08-10T00:16:20Z",
+  "inspection_inputs_hash": "0b34c992a93abfe36c9aa807fcd1f5790afecff31357028999482c842f780437",
   "inspection_inputs": {
     "matched_globs": [
       "docker-compose.yml"
