@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
+    "prisma:generate": "PRISMA_SCHEMA_ENGINE_BINARY=$(pwd)/scripts/stub-schema-engine.sh prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
