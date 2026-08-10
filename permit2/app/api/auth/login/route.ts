@@ -36,13 +36,16 @@ export async function POST(request: NextRequest) {
     const token = signToken({ sub: user.id, email: user.email, name: user.name });
 
     // Set httpOnly cookie (24h) + return token in body
+    const isLocalhost = request.headers.get('host')?.includes('localhost') || request.headers.get('host')?.includes('127.0.0.1');
+    const secureCookie = process.env.NODE_ENV === 'production' && !isLocalhost;
+
     const response = ok({
       token,
       user: { id: user.id, email: user.email, name: user.name },
     });
     response.cookies.set('token', token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: secureCookie,
       sameSite: 'lax',
       maxAge: 60 * 60 * 24, // 24 hours
       path: '/',
