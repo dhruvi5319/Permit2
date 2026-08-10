@@ -1,0 +1,13 @@
+{
+  "generator_version": "init-dev-server@1",
+  "catalog_entry": "compose",
+  "generated_at": "2026-08-10T00:00:00Z",
+  "inspection_inputs_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "inspection_inputs": {
+    "matched_globs": [
+      "docker-compose.yml"
+    ],
+    "manifest_signatures": [],
+    "existing_scripts": []
+  }
+}
