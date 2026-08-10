@@ -7,7 +7,7 @@
 ## Status
 
 **Current state:** Express task complete — full application delivered
-**Last activity:** 2026-08-10 - Completed express task: Build the full Permit2 permit management application
+**Last activity:** 2026-08-10 - UAT verified express task build-the-full-permit2-permit-management (0/0 passed — DOCKER_UNAVAILABLE in sandbox; build ✓ exit 0)
 
 ## What's Been Built
 
@@ -41,6 +41,6 @@ None.
 
 ## Express Tasks Completed
 
-| # | Description | Date | Commit | Directory |
-|---|-------------|------|--------|-----------|
-| build-the-full-permit2-permit-management | Build the full Permit2 permit management application | 2026-08-10 | 2283256 | [build-the-full-permit2-permit-management](./express/build-the-full-permit2-permit-management/) |
+| # | Description | Date | Commit | UAT | Directory |
+|---|-------------|------|--------|-----|-----------|
+| build-the-full-permit2-permit-management | Build the full Permit2 permit management application | 2026-08-10 | 2283256 | ⚠ DOCKER_UNAVAILABLE (build ✓) | [build-the-full-permit2-permit-management](./express/build-the-full-permit2-permit-management/) |

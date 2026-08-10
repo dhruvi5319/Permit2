@@ -7,7 +7,7 @@ total_plans: 5
 total_waves: 4
 ---
 
-# Express Task: Build the Full Permit2 Permit Management Application — Summary
+# Express Task: Build the full Permit2 permit management application — Summary
 
 ## Execution Overview
 
@@ -19,68 +19,74 @@ total_waves: 4
 
 | Wave | Plans | Status |
 |------|-------|--------|
-| 1 | 01 | ✓ Complete |
-| 2 | 02 | ✓ Complete |
-| 3 | 03, 04 | ✓ Complete |
-| 4 | 05 | ✓ Complete |
+| 1 | 01 (database) | ✓ Complete |
+| 2 | 02 (backend-api) | ✓ Complete |
+| 3 | 03, 04 (frontend-ui, frontend-auth) | ✓ Complete |
+| 4 | 05 (integration) | ✓ Complete |
 
 ### Per-Plan Details
 
-**01 (Database Layer):** PostgreSQL schema with User/Permit/PermitStatusHistory models via Prisma 7 ORM, seeded with 15 realistic permits and 1 manager user, with Docker Compose for containerized deployment.
+**01 (Database Layer):** PostgreSQL schema with Prisma 7 ORM, User/Permit/PermitStatusHistory models, idempotent seed with 15 permits + 1 manager user, Docker Compose with healthcheck.
 - Tasks: 2/2
-- Commits: 861e85a (Task 1), 75aa6df (Task 2), cf73da0 (Docker)
-- Files created: `permit2/prisma/schema.prisma`, `permit2/prisma/seed.ts`, `permit2/lib/db.ts`, `permit2/.env.example`, `permit2/prisma.config.ts`, `permit2/Dockerfile`, `docker-compose.yml`
+- Commits: 861e85a, 75aa6df, cf73da0
+- Files created: permit2/prisma/schema.prisma, permit2/prisma/seed.ts, permit2/lib/db.ts, permit2/.env.example, permit2/prisma.config.ts, permit2/Dockerfile, docker-compose.yml
 
-**02 (Backend API):** JWT authentication + 10 REST API endpoints with Zod validation, state machine enforcement, and Next.js middleware route protection using Prisma 7.9.1 driver adapter pattern.
+**02 (Backend API + Authentication):** JWT authentication + 10 REST API endpoints with Zod v4 validation, state machine enforcement (PENDING→APPROVED/REJECTED, APPROVED→REVOKED), Prisma 7 driver adapter, Next.js middleware route protection.
 - Tasks: 4/4
-- Commits: 83c8f15 (Task 1), 993f241 (Task 2), 565731e (Task 3), 80e3e9a (Task 4)
-- Files created: 16 files including all route handlers, lib modules, validations, middleware
+- Commits: 83c8f15, 993f241, 565731e, 80e3e9a
+- Files created: 16 files including all route handlers, lib/auth.ts, lib/permit-service.ts, lib/validations/
 
-**03 (Frontend Design System + Dashboard + List):** Inter font + indigo design system, TanStack Query hooks, Recharts donut chart dashboard with stat cards, URL-synced filter bar with 300ms debounce, sortable paginated permit table.
+**03 (Frontend — Design System, Dashboard, Permit List):** Inter font + indigo design system, TanStack Query v5 hooks, Recharts donut chart dashboard with stat cards + recent activity feed, URL-synced filter bar with 300ms debounce, sortable paginated permit table.
 - Tasks: 2/2
-- Commits: d35143e (Task 1), 56e15b9 (Task 2)
-- Files created: 22 files including components, hooks, types, dashboard page, permits list page
+- Commits: d35143e, 56e15b9
+- Files created: 22 files including all dashboard/list components, shared components, layout, hooks, types
 
-**04 (Frontend Auth + Create + Detail):** JWT middleware route guard, login page with RHF+Zod, permit creation form, detail view with skeleton/404 states, approve/reject/revoke action dialogs with TanStack Query cache invalidation, custom toast system, and typed API client.
+**04 (Frontend — Auth, Create, Detail, Lifecycle Actions):** JWT middleware route guard, login page with RHF+Zod v4, permit creation form (7 fields with cross-field date validation), detail view with skeleton/404 states, approve/reject/revoke action dialogs with TanStack Query cache invalidation, custom toast system, typed API client.
 - Tasks: 3/3
-- Commits: 60f9c81 (Task 1), 7d60ab9 (Task 2), 6c8e118 (Task 3), c496906 (Task 3 layout)
-- Files created: 20 files including login page, permit form, detail page, action dialogs, API client
+- Commits: 60f9c81, 7d60ab9, 6c8e118, c496906
+- Files created: 20 files including login page, PermitForm, detail page, ActionDialog, api-client.ts, mutation hooks
 
-**05 (Integration + Build):** Production build passes with security headers (CSP, HSTS, X-Content-Type-Options, Referrer-Policy, Permissions-Policy) configured without iframe-blocking, backed by lazy Prisma initialization and Suspense-wrapped login page.
+**05 (Integration — Security Headers, ENV, README, Build Fix):** Security headers (CSP, HSTS, X-Content-Type-Options, Referrer-Policy, Permissions-Policy without iframe-blocking), lazy Prisma initialization via Proxy, Suspense boundary for login page, README with setup guide and demo credentials.
 - Tasks: 3/3
-- Commits: 2d2ed1d (Task 1), db5bd1d (Task 2), 89bb7cd (Task 3)
-- Files created: `README.md`; modified: `next.config.ts`, `.env.example`, `lib/db.ts`, login page
+- Commits: 2d2ed1d, db5bd1d, 89bb7cd
+- Files modified: permit2/next.config.ts, permit2/lib/db.ts, permit2/app/(auth)/login/page.tsx
 
 ### Aggregated Stats
 
-- **Total tasks:** 14
-- **Total commits:** 14
-- **Key files created:** 72+ source files across database, API, frontend layers
-- **Final build:** `npm run build` exits 0 with all 15 routes compiled
+- **Total tasks:** 14 across 5 plans
+- **Total commits:** ~15 (including auto-fix commits)
+- **Key files created:** 60+ files spanning database schema, API routes, React components, hooks, types, configuration
+
+### Build Verification
+
+```
+npm run build — exit 0 ✓
+TypeScript — 0 errors ✓
+Routes compiled: 15 (5 API auth + permit routes + 5 UI pages + root + not-found)
+```
+
+### Application Architecture
+
+- **Framework:** Next.js 16.3.0 (App Router, Turbopack)
+- **Database:** PostgreSQL 16 (Docker) + Prisma 7.9.1 with @prisma/adapter-pg
+- **Auth:** JWT HS256 + httpOnly cookies (24h expiry)
+- **Frontend:** React + TanStack Query v5 + Recharts + Tailwind CSS + Inter font
+- **Validation:** Zod v4 (client + server)
+- **Deployment:** Docker Compose (db + app services, port 3000)
+
+### Demo Credentials
+
+- **URL:** http://localhost:3000
+- **Email:** manager@permit2.dev
+- **Password:** demo1234
 
 ### Deviations
 
-1. **Prisma 7 datasource URL format change** (Plan 01) — `prisma.config.ts` required for URL in v7.9.1; auto-fixed
-2. **Zod v4 API compatibility** (Plans 02, 04) — Project uses Zod 4.4.3; replaced v3 API patterns; auto-fixed
-3. **Prisma 7.9.1 driver adapter requirement** (Plan 02) — `@prisma/adapter-pg` required; auto-fixed
-4. **NavBar file casing mismatch** (Plans 03, 04) — `NavBar.tsx` vs `Navbar.tsx`; auto-fixed with alias export
-5. **Server layout + client providers conflict** (Plan 04) — Resolved via `LayoutShell` client component bridge
-6. **Prisma initialization at build time** (Plan 05) — Proxy-based lazy singleton; auto-fixed
-7. **`useSearchParams()` without Suspense boundary** (Plan 05) — Split `LoginPage`/`LoginForm`; auto-fixed
-
-## Application Structure
-
-```
-Login flow:    /login → POST /api/auth/login → JWT cookie → /dashboard
-Dashboard:     /dashboard → GET /api/permits/stats → stat cards + donut chart + recent activity
-Permit list:   /permits → GET /api/permits → filterable, sortable, paginated table
-Create permit: /permits/new → POST /api/permits → redirect to /permits/:id
-Permit detail: /permits/:id → GET /api/permits/:id → full detail + status timeline
-Lifecycle:     PATCH /api/permits/:id/approve|reject|revoke → state machine enforced
-Logout:        POST /api/auth/logout → clear cookie → /login
-```
-
-## Demo Credentials
-
-- **Email:** `manager@permit2.dev`
-- **Password:** `demo1234`
+All deviations were auto-fixed (Rule 1 bugs):
+1. Prisma 7 datasource URL → moved to prisma.config.ts
+2. Zod v4 API changes (required_error → .min(1), .errors → .issues)
+3. Prisma driver adapter requirement (@prisma/adapter-pg)
+4. Build-time DATABASE_URL → lazy Proxy singleton
+5. Next.js 16 useSearchParams() → Suspense boundary
+6. NavBar.tsx casing conflict → consolidated into NavBar.tsx with Navbar alias
+7. No-network sandbox → stub-schema-engine.sh for offline prisma generate
