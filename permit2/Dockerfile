@@ -38,6 +38,10 @@ COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/scripts ./scripts
+
+# Fix ownership so nextjs user can write engine files at runtime
+RUN chown -R nextjs:nodejs /app/node_modules /app/prisma /app/scripts
 
 USER nextjs
 
@@ -46,5 +50,5 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-# Entrypoint: run migrations, seed, then start the server
-CMD ["sh", "-c", "npx prisma migrate deploy && npx prisma db seed && node server.js"]
+# Entrypoint: apply schema via raw SQL (no schema-engine needed), seed, then start
+CMD ["sh", "-c", "node scripts/db-init.js && node_modules/.bin/ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed.ts && node server.js"]
