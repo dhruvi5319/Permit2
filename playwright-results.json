@@ -1,0 +1,1678 @@
+{
+  "config": {
+    "argv": [
+      "/usr/local/share/nvm/versions/node/v25.9.0/bin/node",
+      "/home/daytona/project/node_modules/.bin/playwright",
+      "test",
+      "e2e/uat/build-the-full-permit2-permit-management.spec.ts",
+      "--timeout=30000",
+      "--reporter=json"
+    ],
+    "configFile": "/home/daytona/project/playwright.config.ts",
+    "rootDir": "/home/daytona/project/e2e/uat",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/daytona/project/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/daytona/project/e2e/uat",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 24,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "build-the-full-permit2-permit-management.spec.ts",
+      "file": "build-the-full-permit2-permit-management.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "US-0.1 — Login to Permit2",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 95,
+          "column": 6,
+          "specs": [
+            {
+              "title": "A styled login page is displayed at /login with email and password fields and a Sign In button",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 381,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:18.980Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-62374c85215b8c70a41b",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 96,
+              "column": 7
+            },
+            {
+              "title": "Submitting valid credentials redirects to the dashboard (/dashboard)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 713,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:19.514Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-53f33c0b0852abbbc659",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 103,
+              "column": 7
+            },
+            {
+              "title": "Invalid credentials show a generic inline error \"Invalid email or password.\"",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 470,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:20.250Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-4e5aa894a7eaffebc8a1",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 112,
+              "column": 7
+            },
+            {
+              "title": "Empty email or password fields show an inline validation error before any API call is made",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 921,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:20.735Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-144cc84eb50dfb73256c",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 120,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-0.3 — Log Out Securely",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 139,
+          "column": 6,
+          "specs": [
+            {
+              "title": "A Logout control is visible in the navigation header on authenticated pages",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 710,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:21.665Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-c44cf1a64a804b9557ba",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 140,
+              "column": 7
+            },
+            {
+              "title": "Clicking Logout redirects the user to /login",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 821,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:22.391Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-20a611063252d3da4649",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 145,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-0.4 — Be Redirected to Login When Accessing Protected Routes Unauthenticated",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 157,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Accessing /dashboard without being logged in redirects to /login",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 836,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:23.227Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-fb67c671e25a6c1fe33c",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 158,
+              "column": 7
+            },
+            {
+              "title": "Accessing /permits without being logged in redirects to /login",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 853,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:24.074Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-76f7ff279b630039785f",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 165,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-1.1 — View Permit Status Overview at a Glance",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 176,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Dashboard displays stat cards for Total Permits, Pending, Approved, Rejected, Revoked",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 836,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:24.941Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-e993acb804ffa01b6537",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 177,
+              "column": 7
+            },
+            {
+              "title": "Dashboard page heading \"Dashboard\" is visible after login",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 698,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:25.788Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-2d272a051115e6000aa1",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 186,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-1.2 — View a Visual Status Breakdown Chart",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 196,
+          "column": 6,
+          "specs": [
+            {
+              "title": "A chart labeled \"Permits by Status\" is rendered on the dashboard",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 777,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:26.501Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-a7ee0f84c0bc6ee7ff57",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 197,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-1.3 — Review Recent Permit Activity",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 207,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Recent Activity panel is visible on the dashboard",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 724,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:27.344Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-ce705d5f9cc783524d05",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 208,
+              "column": 7
+            },
+            {
+              "title": "A \"View all permits\" link is visible that navigates to /permits",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1099,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:28.081Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-9fd3d6a3f36c260f340a",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 213,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-1.4 — Navigate to Create a Permit from the Dashboard",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 227,
+          "column": 6,
+          "specs": [
+            {
+              "title": "A \"Create New Permit\" button is visible on the dashboard",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 562,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:29.192Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-007c853df742e9cbc2cc",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 228,
+              "column": 7
+            },
+            {
+              "title": "Clicking \"Create New Permit\" navigates to /permits/new",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 905,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:29.765Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-730f2dabbc7b9f6910ef",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 233,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-2.1 — Create a New Permit Request",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 245,
+          "column": 6,
+          "specs": [
+            {
+              "title": "The creation form at /permits/new contains fields for Title, Permit Type, Applicant Name, Start Date, End Date, Description",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 738,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:30.680Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-a61747e30e93b043b571",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 246,
+              "column": 7
+            },
+            {
+              "title": "On successful submission, the permit is saved and the user is navigated to the new permit's detail view",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1530,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:31.429Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-471285487dc165169391",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 258,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-2.3 — Select a Permit Type from a Predefined List",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 282,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Permit Type field is a dropdown with options: Work Permit, Access Permit, Activity Authorization, Safety Permit, Other",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 751,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:32.980Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-30131135d9af1adb9000",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 283,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-3.1 — View All Permits in a Paginated Table",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 300,
+          "column": 6,
+          "specs": [
+            {
+              "title": "The permit list at /permits displays a table with columns including Title, Type, Applicant, Status",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 927,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:33.745Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-c1ab6fad58e451aa4a7a",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 301,
+              "column": 7
+            },
+            {
+              "title": "Status is displayed as a color-coded badge",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1593,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:34.687Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-fc64018ba0edee106f42",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 310,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-3.3 — Navigate to a Permit's Detail View from the List",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 331,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Clicking a permit row navigates to /permits/:id",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1572,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:36.291Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-d970c2442ca3b2591ced",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 332,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-4.1 — Search Permits by Title, Applicant, or Description",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 349,
+          "column": 6,
+          "specs": [
+            {
+              "title": "A search input is displayed above the permit table with placeholder \"Search permits by title, applicant, or description…\"",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 802,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:37.874Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-301c950f52c3a798b71d",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 350,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-4.2 — Filter Permits by Status",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 363,
+          "column": 6,
+          "specs": [
+            {
+              "title": "A status filter offers options including Pending, Approved, Rejected, Revoked",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1504,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:38.687Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-4e025bc4f7768cb6b947",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 364,
+              "column": 7
+            },
+            {
+              "title": "Selecting a status filters the list",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1472,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:40.204Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-e6c6a0c4ffa8837db50f",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 375,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-5.1 — View Full Permit Information on a Dedicated Page",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 398,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Detail page at /permits/:id displays Title, Type, Applicant Name, Status",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2082,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:41.691Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-001fb4461e158ab9a81a",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 399,
+              "column": 7
+            },
+            {
+              "title": "The current status is shown as a prominently placed color-coded badge",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2262,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:43.785Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-87d23e5af8c420753a00",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 411,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-5.2 — View the Permit's Status History Timeline",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 427,
+          "column": 6,
+          "specs": [
+            {
+              "title": "A Status History timeline panel is displayed on the permit detail page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1596,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:46.063Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-5c6946d7d429fce9c06b",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 428,
+              "column": 7
+            },
+            {
+              "title": "The initial Created — PENDING event is present",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1612,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:47.672Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-740e97eea39850cf11b7",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 435,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-5.3 — Navigate Using Breadcrumbs and Back Links",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 448,
+          "column": 6,
+          "specs": [
+            {
+              "title": "A breadcrumb trail is shown at the top of the permit detail page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2266,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:49.300Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-85ce13ceb5b9dc080dbc",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 449,
+              "column": 7
+            },
+            {
+              "title": "A Back to Permits link is available",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1707,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:51.579Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-45d0d8ccff28557b1068",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 461,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-6.1 — Approve a Pending Permit",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 474,
+          "column": 6,
+          "specs": [
+            {
+              "title": "An Approve button is visible on the detail page when the permit status is PENDING",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1416,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:53.299Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-aa3e2153ede5d87bf605",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 475,
+              "column": 7
+            },
+            {
+              "title": "Clicking Approve opens a confirmation dialog",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1366,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:54.728Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-d478bb3a2ec4c9637504",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 483,
+              "column": 7
+            },
+            {
+              "title": "Confirming approval updates the status to APPROVED",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1658,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:56.108Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-5d201a3f0eff3529786e",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 493,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-6.2 — Reject a Pending Permit with an Optional Reason",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 508,
+          "column": 6,
+          "specs": [
+            {
+              "title": "A Reject button is visible on the detail page when the permit status is PENDING",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10088,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:52:57.778Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-53f4a268bfaae73e2da4",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 509,
+              "column": 7
+            },
+            {
+              "title": "Clicking Reject opens a confirmation dialog with an optional Rejection Reason text field",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1552,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:53:07.879Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-7a564a6c0433ed4050c0",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 517,
+              "column": 7
+            },
+            {
+              "title": "Confirming rejection updates the status to REJECTED",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1945,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:53:09.443Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-a290bf0d67ab3872bda3",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 530,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-6.3 — Revoke an Approved Permit",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 545,
+          "column": 6,
+          "specs": [
+            {
+              "title": "A Revoke button is visible on the detail page when the permit status is APPROVED",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1359,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:53:11.400Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-b872e9e19f877b4c3cda",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 546,
+              "column": 7
+            },
+            {
+              "title": "Confirming revocation updates the status to REVOKED",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1832,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:53:12.771Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-1115c2c0343a2a4ba067",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 554,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-7.4 — Receive Transient Toast Notifications for Actions",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 569,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Success toast appears after approving a permit",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10558,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:53:14.614Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-d9f1623c3b5afe29d377",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 570,
+              "column": 7
+            },
+            {
+              "title": "Success toast appears after rejecting a permit",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10415,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:53:25.184Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-fe3c1d8f84da30636f3c",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 582,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "US-8.1 — Have All Permit Actions Backed by a Reliable REST API",
+          "file": "build-the-full-permit2-permit-management.spec.ts",
+          "line": 599,
+          "column": 6,
+          "specs": [
+            {
+              "title": "GET /api/permits returns a list of permits when authenticated",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 668,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:53:35.611Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-e76921012a79d9bff4d4",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 600,
+              "column": 7
+            },
+            {
+              "title": "GET /api/permits/stats returns permit counts when authenticated",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 752,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-10T03:53:36.290Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e785df369e573e3f2dbd-5497a16716b55d0b3408",
+              "file": "build-the-full-permit2-permit-management.spec.ts",
+              "line": 612,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-08-10T03:52:18.598Z",
+    "duration": 78551.291,
+    "expected": 42,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
